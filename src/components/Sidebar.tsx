@@ -23,7 +23,11 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType>({
   isCollapsed: false,
-  toggleSidebar: () => {},
+  toggleSidebar: () => {
+    if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      console.warn('SidebarContext.toggleSidebar called without provider');
+    }
+  },
 });
 
 export const useSidebar = () => useContext(SidebarContext);

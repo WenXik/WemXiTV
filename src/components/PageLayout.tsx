@@ -1,7 +1,7 @@
+import DesktopBottomNav from './DesktopBottomNav';
 import DesktopHeader from './DesktopHeader';
 import MobileBottomNav from './MobileBottomNav';
 import MobileHeader from './MobileHeader';
-import DesktopBottomNav from './DesktopBottomNav';
 import ScrollToTopButton from './ScrollToTopButton';
 
 interface PageLayoutProps {

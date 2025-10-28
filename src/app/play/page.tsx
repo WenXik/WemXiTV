@@ -705,7 +705,7 @@ function PlayPageClient() {
 
     // 鎬ц兘鐩戞帶鍙橀噺
     let lastFrameTime = 0;
-    let frameCount = 0;
+    let _frameCount = 0;
     let tempCanvas: HTMLCanvasElement | null = null;
     let tempCtx: CanvasRenderingContext2D | null = null;
     const TARGET_FPS = 30; // 鐩爣甯х巼
@@ -742,7 +742,7 @@ function PlayPageClient() {
         return;
       }
       lastFrameTime = currentTime;
-      frameCount++;
+      _frameCount++;
 
       const allow =
         aiEnhanceEnabledRef.current ||
