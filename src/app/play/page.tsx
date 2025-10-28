@@ -1729,9 +1729,9 @@ function PlayPageClient() {
     if (!isWebkit && artPlayerRef.current && !playerCreatingRef.current) {
       try {
         artPlayerRef.current.switch = videoUrl;
-        artPlayerRef.current.title = `${videoTitle} - 绗?{
+        artPlayerRef.current.title = `${videoTitle} - Episode ${
           currentEpisodeIndex + 1
-        }闆哷;
+        }`;
         artPlayerRef.current.poster = videoCover;
         if (artPlayerRef.current?.video) {
           ensureVideoSource(
