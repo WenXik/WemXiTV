@@ -2262,10 +2262,10 @@ function PlayPageClient() {
             <div className='relative mb-8'>
               <div className='relative mx-auto w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
                 <div className='text-white text-4xl'>
-                  {loadingStage === 'searching' && '馃攳'}
-                  {loadingStage === 'preferring' && '鈿?}
-                  {loadingStage === 'fetching' && '馃幀'}
-                  {loadingStage === 'ready' && '鉁?}
+                  {loadingStage === 'searching' && 'Searching'}
+                  {loadingStage === 'preferring' && 'Preferring'}
+                  {loadingStage === 'fetching' && 'Fetching'}
+                  {loadingStage === 'ready' && 'Ready'}
                 </div>
                 {/* 鏃嬭浆鍏夌幆 */}
                 <div className='absolute -inset-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl opacity-20 animate-spin'></div>
