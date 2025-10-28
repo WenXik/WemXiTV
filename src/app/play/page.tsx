@@ -1815,7 +1815,7 @@ function PlayPageClient() {
         customType: {
           m3u8: function (video: HTMLVideoElement, url: string) {
             if (!Hls) {
-              console.error('HLS.js 鏈姞杞?);
+              console.error('HLS.js failed to load');
               return;
             }
 
@@ -1874,9 +1874,9 @@ function PlayPageClient() {
             ? []
             : [
                 {
-                  html: 'AI澧炲己4K',
+                  html: 'AI Enhance 4K',
                   icon: '<text x="50%" y="50%" font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="#22c55e">AI</text>',
-                  tooltip: aiEnhanceEnabled ? '宸插紑鍚? : '宸插叧闂?,
+                  tooltip: aiEnhanceEnabled ? 'Enabled' : 'Disabled',
                   onClick() {
                     const newVal = !aiEnhanceEnabled;
                     try {
@@ -1929,9 +1929,9 @@ function PlayPageClient() {
                 },
               ]),
           {
-            html: '鍘诲箍鍛?,
+            html: 'Ad Block',
             icon: '<text x="50%" y="50%" font-size="20" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="#ffffff">AD</text>',
-            tooltip: blockAdEnabled ? '宸插紑鍚? : '宸插叧闂?,
+            tooltip: blockAdEnabled ? 'Enabled' : 'Disabled',
             onClick() {
               const newVal = !blockAdEnabled;
               try {
@@ -1951,9 +1951,9 @@ function PlayPageClient() {
               } catch (_) {
                 // ignore
               }
-              return newVal ? '褰撳墠寮€鍚? : '褰撳墠鍏抽棴';
-            },
+              return newVal ? 'Enabled' : 'Disabled';
           },
+        },
           {
             name: '璺宠繃鐗囧ご鐗囧熬',
             html: '璺宠繃鐗囧ご鐗囧熬',
@@ -2029,7 +2029,7 @@ function PlayPageClient() {
             position: 'left',
             index: 13,
             html: '<i class="art-icon flex"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" fill="currentColor"/></svg></i>',
-            tooltip: '鎾斁涓嬩竴闆?,
+            tooltip: 'Play next episode',
             click: function () {
               handleNextEpisode();
             },
