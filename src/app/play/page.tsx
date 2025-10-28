@@ -1170,7 +1170,7 @@ function PlayPageClient() {
         sourcesInfo = await fetchSourceDetail(currentSource, currentId);
       }
       if (sourcesInfo.length === 0) {
-        setError('鏈壘鍒板尮閰嶇粨鏋?);
+        setError('No matching results found');
         setLoading(false);
         return;
       }
@@ -1184,7 +1184,7 @@ function PlayPageClient() {
         if (target) {
           detailData = target;
         } else {
-          setError('鏈壘鍒板尮閰嶇粨鏋?);
+          setError('No matching results found');
           setLoading(false);
           return;
         }
@@ -1331,7 +1331,7 @@ function PlayPageClient() {
         (source) => source.source === newSource && source.id === newId
       );
       if (!newDetail) {
-        setError('鏈壘鍒板尮閰嶇粨鏋?);
+        setError('No matching results found');
         return;
       }
 
