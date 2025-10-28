@@ -1308,7 +1308,7 @@ function PlayPageClient() {
             currentSourceRef.current,
             currentIdRef.current
           );
-          console.log('宸叉竻闄ゅ墠涓€涓挱鏀捐褰?);
+          console.log('Previous play record removed');
         } catch (err) {
           console.error('娓呴櫎鎾斁璁板綍澶辫触:', err);
         }
@@ -1857,7 +1857,7 @@ function PlayPageClient() {
                     hls.recoverMediaError();
                     break;
                   default:
-                    console.log('鏃犳硶鎭㈠鐨勯敊璇?);
+                    console.log('Unrecoverable error');
                     hls.destroy();
                     break;
                 }
