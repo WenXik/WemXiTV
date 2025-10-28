@@ -17,7 +17,7 @@ const DesktopHeader = ({ showBackButton = false }: DesktopHeaderProps) => {
   return (
     <header
       data-liquid
-      className='hidden md:block sticky top-0 z-[1000] w-full border-b'
+      className='hidden md:block sticky top-0 z-[1000] w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-b-[9999px] shadow-2xl ring-1 ring-white/50 dark:ring-white/20'
     >
       <div className='h-14 flex items-center justify-between px-6 relative z-10'>
         {/* 左侧：返回按钮（移除折叠按钮） */}
