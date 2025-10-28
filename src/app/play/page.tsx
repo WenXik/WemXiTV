@@ -1881,7 +1881,7 @@ function PlayPageClient() {
                     const newVal = !aiEnhanceEnabled;
                     try {
                       localStorage.setItem('enable_ai_enhance', String(newVal));
-                      // 鍒囨崲鏃堕噸寤烘挱鏀惧櫒锛氫繚瀛樿繘搴﹀苟閿€姣佸疄渚嬶紝鏁堟灉鐢熸晥鏇寸ǔ瀹?
+                      // Rebuild player on toggle: save progress and destroy instance for stable effect
                       if (artPlayerRef.current) {
                         resumeTimeRef.current = artPlayerRef.current.currentTime;
                         if (artPlayerRef.current.video && artPlayerRef.current.video.hls) {
@@ -1894,13 +1894,13 @@ function PlayPageClient() {
                     } catch (_) {
                       // ignore
                     }
-                    return newVal ? '褰撳墠寮€鍚? : '褰撳墠鍏抽棴';
+                    return newVal ? 'Currently Enabled' : 'Currently Disabled';
                   },
                 },
                 {
                   html: 'AI澧炲己绾у埆',
                   icon: '<text x="50%" y="50%" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="#3b82f6">绾?/text>',
-                  tooltip: `褰撳墠: ${aiEnhanceLevel === 'standard' ? '鏍囧噯' : aiEnhanceLevel === 'advanced' ? '楂樼骇' : '鏋佽嚧'}`,
+                  tooltip: `Current: ${aiEnhanceLevel === 'standard' ? 'Standard' : aiEnhanceLevel === 'advanced' ? 'Advanced' : 'Extreme'}`,
                   onClick() {
                     const levels = ['standard', 'advanced', 'extreme'] as const;
                     const levelNames = ['鏍囧噯', '楂樼骇', '鏋佽嚧'];
