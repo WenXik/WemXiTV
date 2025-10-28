@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  /* 阻止 iOS Safari 拉动回弹 */
+  overscroll-behavior: none;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+html:not(.dark) body {
+  background: linear-gradient(
+    180deg,
+    #e6f3fb 0%,
+    #eaf3f7 18%,
+    #f7f7f3 38%,
+    #e9ecef 60%,
+    #dbe3ea 80%,
+    #d3dde6 100%
+  );
+  background-attachment: fixed;
+}
+
+html.dark body {
+  background: linear-gradient(
+    180deg,
+    #0b1220 0%,
+    #0d1524 40%,
+    #0a0f1b 100%
+  );
+  background-attachment: fixed;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.5);
+}
+
+/* 视频卡片悬停效果 */
+.video-card-hover {
+  transition: transform 0.3s ease;
+}
+
+.video-card-hover:hover {
+  transform: scale(1.05);
+}
+
+/* 渐变遮罩 */
+.gradient-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* 隐藏移动端（<768px）垂直滚动条 */
+@media (max-width: 767px) {
+  html,
+  body {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+}
+
+/* 隐藏所有滚动条（兼容 WebKit、Firefox、IE/Edge） */
+* {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* View Transitions API 动画 */
+@keyframes slide-from-top {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes slide-from-bottom {
+  from {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+/*
+  切换时，旧的视图不应该有动画，它应该在下面，等待被新的视图覆盖。
+  这可以防止在动画完成前，页面底部提前变色。
+*/
+::view-transition-old(root) {
+  animation: none;
+}
+
+/* 从浅色到深色：新内容（深色）从顶部滑入 */
+html.dark::view-transition-new(root) {
+  animation-name: slide-from-top;
+}
+
+/* 从深色到浅色：新内容（浅色）从底部滑入 */
+html:not(.dark)::view-transition-new(root) {
+  animation-name: slide-from-bottom;
+}
+
+/* 强制播放器内部的 video 元素高度为 100%，并保持内容完整显示 */
+div[data-media-provider] video {
+  height: 100%;
+  object-fit: contain;
+}
+
+.art-poster {
+  background-size: contain !important; /* 使图片完整展示 */
+  background-position: center center !important; /* 居中显示 */
+  background-repeat: no-repeat !important; /* 防止重复 */
+  background-color: #000 !important; /* 其余区域填充为黑色 */
+}
+
+/* 隐藏移动端竖屏时的 pip 按钮 */
+@media (max-width: 768px) {
+  .art-control-pip {
+    display: none !important;
+  }
+
+  .art-control-fullscreenWeb {
+    display: none !important;
+  }
+
+  .art-control-volume {
+    display: none !important;
+  }
+}
+
+/* —— Liquid Glass (苹果液态玻璃) ———————————————— */
+[data-liquid] {
+  position: relative;
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  /* 半透明底色，偏暖，配合模糊与饱和度增强 */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.36);
+  border-radius: 1.5rem; /* 对齐 rounded-3xl，形成半圆形端部 */
+  box-shadow:
+    /* 外部阴影，增强浮动感 */
+    0 14px 28px rgba(17, 24, 39, 0.14),
+    0 4px 12px rgba(17, 24, 39, 0.12),
+    /* 内部高光与内阴影，增强液态边缘与凝胶感 */
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -3px 10px rgba(17, 24, 39, 0.12);
+}
+
+[data-liquid]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  /* 顶部高光与斜向光泽，两层径向渐变叠加，增强"液态流动"质感 */
+  background:
+    radial-gradient(160px 80px at 15% -5%, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 65%),
+    radial-gradient(240px 120px at 80% 125%, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0) 75%);
+}
+
+.dark [data-liquid] {
+  background: rgba(17, 24, 39, 0.28);
+  border-color: rgba(148, 163, 184, 0.25);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.32),
+    0 5px 14px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -3px 10px rgba(0, 0, 0, 0.28);
+}
+
+.dark [data-liquid]::before {
+  background:
+    radial-gradient(160px 80px at 15% -5%, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0) 65%),
+    radial-gradient(240px 120px at 80% 125%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 75%);
+}
+
+/* 交互微动：悬停时轻微提升光泽与阴影 */
+[data-liquid]:hover::before {
+  background:
+    radial-gradient(170px 85px at 15% -5%, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 65%),
+    radial-gradient(260px 130px at 80% 125%, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 75%);
+}
+
+/* 全局液态玻璃效果（苹果风格） */
+[data-glass] {
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.dark [data-glass] {
+  backdrop-filter: saturate(180%) blur(22px);
+}
+
+/* 边框与层次统一（在 tailwind 边框基础上加强一致性） */
+[data-glass] {
+  border-color: rgba(148, 163, 184, 0.3);
+}
+.dark [data-glass] {
+  border-color: rgba(148, 163, 184, 0.25);
+}

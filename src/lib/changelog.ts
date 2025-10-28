@@ -1,0 +1,87 @@
+// 此文件由 scripts/convert-changelog.js 自动生成
+// 请勿手动编辑
+
+export interface ChangelogEntry {
+  version: string;
+  date: string;
+  added: string[];
+  changed: string[];
+  fixed: string[];
+}
+
+export const changelog: ChangelogEntry[] = [
+  {
+    version: '1.0.4',
+    date: '2025-10-27',
+    added: [
+      '桌面端“回到顶部”浮动按钮，基于主内容滚动容器，平滑返回页面顶部',
+      '横向推荐行支持鼠标滚轮横向滚动（纵向滚轮映射为横向），浏览更自然',
+      '桌面端底部居中导航胶囊（DesktopBottomNav）液态玻璃外观增强',
+    ],
+    changed: [
+      '播放页顶部/底部遮罩优化：高度与透明度调整，过渡改为 500ms',
+      '视频标题与收藏按钮微动画：弹性缩放与光晕效果，提升交互反馈',
+      '分集面板折叠/展开动画优化：宽度、位移、缩放与 GPU 加速，缓动为 ease-out',
+      '网格布局过渡：折叠分集面板时播放器平滑扩展至全宽（grid-template-columns 动画）',
+      '顶栏滚动与层级：顶栏保持固定（sticky top-0），提高 z-index，主内容区改为独立滚动容器，仅内容随滚动',
+      '液态玻璃效果（[data-liquid]）：浅色透明度提升至 0.35、暗色 0.28；调整高光位置与大小；边框改为 rgba(148,163,184,0.36) 并增强内阴影，凝胶感更强',
+      '桌面底部导航胶囊形态：对齐 rounded-3xl、增大 padding 与阴影，提升悬浮与光泽视觉',
+    ],
+    fixed: [
+      '修复分集面板折叠时整个播放器区域错误跟随收缩的问题',
+      '修复顶栏在滚动中偶发被内容遮挡或错位的问题（提高层级并统一滚动容器）',
+    ],
+  },
+  {
+    version: '1.0.3',
+    date: '2025-08-11',
+    added: [
+      // 无新增内容
+    ],
+    changed: ['升级播放器 Artplayer 至版本 5.2.5'],
+    fixed: [
+      // 无修复内容
+    ],
+  },
+  {
+    version: '1.0.2',
+    date: '2025-08-11',
+    added: [
+      // 无新增内容
+    ],
+    changed: [
+      '版本号比较机制恢复为数字比较，仅当最新版本大于本地版本时才认为有更新',
+      '[运维] 自动替换 version.ts 中的版本号为 VERSION.txt 中的版本号',
+    ],
+    fixed: [
+      // 无修复内容
+    ],
+  },
+  {
+    version: '1.0.1',
+    date: '2025-08-11',
+    added: [
+      // 无新增内容
+    ],
+    changed: [
+      // 无变更内容
+    ],
+    fixed: ['修复版本检查功能，只要与最新版本号不一致即认为有更新'],
+  },
+  {
+    version: '1.0.0',
+    date: '2025-08-10',
+    added: [
+      '基于 Semantic Versioning 的版本号机制',
+      '版本信息面板，展示本地变更日志和远程更新日志',
+    ],
+    changed: [
+      // 无变更内容
+    ],
+    fixed: [
+      // 无修复内容
+    ],
+  },
+];
+
+export default changelog;
