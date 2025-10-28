@@ -376,4 +376,4 @@ WenXiTV 支持标准的苹果 CMS V10 API 格式。
 
 ## Star 趋势
 
-[![Stargazers over time](https://starchart.cc/LunaTechLab/WenXiTV.svg?variant=adaptive)](https://starchart.cc/LunaTechLab/WenXiTV)
+[![Stargazers over time](https://starchart.cc/WenXik/WemXiTV.svg?variant=adaptive)](https://starchart.cc/WenXik/WemXiTV)
