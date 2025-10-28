@@ -567,10 +567,10 @@ function PlayPageClient() {
         wakeLockRef.current = await (navigator as any).wakeLock.request(
           'screen'
         );
-        console.log('Wake Lock 宸插惎鐢?);
+        console.log('Wake Lock enabled');
       }
     } catch (err) {
-      console.warn('Wake Lock 璇锋眰澶辫触:', err);
+      console.warn('Wake Lock request failed:', err);
     }
   };
 
@@ -579,10 +579,10 @@ function PlayPageClient() {
       if (wakeLockRef.current) {
         await wakeLockRef.current.release();
         wakeLockRef.current = null;
-        console.log('Wake Lock 宸查噴鏀?);
+        console.log('Wake Lock released');
       }
     } catch (err) {
-      console.warn('Wake Lock 閲婃斁澶辫触:', err);
+      console.warn('Wake Lock release failed:', err);
     }
   };
 
