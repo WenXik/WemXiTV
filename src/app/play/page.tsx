@@ -1710,7 +1710,7 @@ function PlayPageClient() {
       currentEpisodeIndex >= detail.episodes.length ||
       currentEpisodeIndex < 0
     ) {
-      setError(`閫夐泦绱㈠紩鏃犳晥锛屽綋鍓嶅叡 ${totalEpisodes} 闆哷);
+      setError(`Invalid episode index, total ${totalEpisodes} episodes`);
       return;
     }
 
@@ -2422,7 +2422,7 @@ function PlayPageClient() {
             {videoTitle || '褰辩墖鏍囬'}
             {totalEpisodes > 1 && (
               <span className='text-gray-500 dark:text-gray-400'>
-                {` > 绗?${currentEpisodeIndex + 1} 闆哷}
+                {` > Episode ${currentEpisodeIndex + 1}`}
               </span>
             )}
           </h1>
